@@ -28,3 +28,14 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIACOsHpydnlvP1Jx/rItxooywwYqgqUqkps1y1GrJ9lC
 
 git remote set-url origin git@github.com:DreamerZ26/3wpoultryfarm.git
 git push -u origin main
+
+
+git add render.yaml
+git commit -m "Fix start command"
+git push
+
+
+python manage.py migrate
+
+
+https://threewpoultryfarm.onrender.com
