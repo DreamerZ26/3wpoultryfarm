@@ -1,0 +1,30 @@
+
+
+
+cd "D:\Capstone Project\Website - 1"
+py -3.11 -m venv venv
+.\venv\Scripts\Activate.ps1
+
+
+cd D:\Capstone Project\Website - 1
+cd Website - 1
+
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+
+
+git config --global user.email "dreamtheimpossibe1319@gmail.com"
+git config --global user.name "DreamerZ-26"
+
+
+ssh-keygen -t ed25519 -C "dreamtheimpossibe1319@gmail.com"
+
+
+
+Get-Content ~/.ssh/id_ed25519.pub | Set-Clipboard
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIACOsHpydnlvP1Jx/rItxooywwYqgqUqkps1y1GrJ9lC dreamtheimpossibe1319@gmail.com
+
+
+git remote set-url origin git@github.com:DreamerZ26/3wpoultryfarm.git
+git push -u origin main
