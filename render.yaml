@@ -1,6 +1,7 @@
-services:
+
+    services:
   - type: web
-    name: django-modern-site
+    name: 3wpoultryfarm
     env: python
     buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
     startCommand: "gunicorn mysite.wsgi:application"
@@ -10,13 +11,13 @@ services:
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
-        value: "your-app.onrender.com,localhost"
+        value: ".onrender.com"
       - key: DATABASE_URL
         fromDatabase:
-          name: django-db
+          name: poultry-db
           property: connectionString
     autoDeploy: true
 
 databases:
-  - name: django-db
+  - name: poultry-db
     plan: free
