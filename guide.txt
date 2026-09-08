@@ -36,4 +36,7 @@ git push origin main
 python manage.py migrate
 
 
+python manage.py makemigrations pages
+python manage.py migrate
+
 https://threewpoultryfarm.onrender.com

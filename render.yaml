@@ -2,7 +2,7 @@ services:
   - type: web
     name: 3wpoultryfarm
     env: python
-    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate"
     startCommand: "gunicorn mysite.wsgi:application"
     envVars:
       - key: SECRET_KEY
@@ -15,6 +15,12 @@ services:
         fromDatabase:
           name: poultry-db
           property: connectionString
+      - key: EMAIL_HOST_USER
+        value: ""   # set your email for contact form
+      - key: EMAIL_HOST_PASSWORD
+        value: ""
+      - key: DEFAULT_FROM_EMAIL
+        value: "noreply@3wpoultry.com"
     autoDeploy: true
 
 databases:

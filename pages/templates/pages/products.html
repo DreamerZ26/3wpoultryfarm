@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Our Products – 3W Poultry Farm{% endblock %}
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">Our Products</h1>
+    <div class="row g-4">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm feature-card">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                {% endif %}
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text text-muted">{{ product.description|truncatechars:60 }}</p>
+                    <p class="fw-bold">${{ product.price }}</p>
+                    <a href="{{ product.get_absolute_url }}" class="btn btn-outline-success">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p>No products available at the moment. Please check back later.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
