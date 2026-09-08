@@ -2,19 +2,52 @@
 {% block title %}Contact Us – 3W Poultry Farm{% endblock %}
 {% block content %}
 <div class="container my-5">
-    <h1 class="text-center mb-4">Get in Touch</h1>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            {% if messages %}
-                {% for message in messages %}
-                <div class="alert alert-success">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-            <form method="post" novalidate>
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-success">Send Message</button>
-            </form>
+    <h1 class="text-center mb-4">Contact Us</h1>
+    <div class="row g-4">
+        <!-- Contact Details -->
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Get in Touch</h4>
+                    <p><strong>Email:</strong><br>
+                    <a href="mailto:threewpoultryfarm@gmail.com">threewpoultryfarm@gmail.com</a></p>
+
+                    <p><strong>Facebook:</strong><br>
+                    <a href="https://www.facebook.com/profile.php?id=61582136377743" target="_blank">
+                        facebook.com/3wpoultryfarm
+                    </a></p>
+
+                    <p><strong>Cellphone Numbers:</strong><br>
+                    Smart: <a href="tel:+639217082765">0921‑708‑2765</a><br>
+                    Globe: <a href="tel:+639451279710">0945‑127‑9710</a></p>
+
+                    <p><strong>Location:</strong><br>
+                    <a href="https://www.google.com/maps?q=7R5H+J67+Lawaan+I+Talisay+Cebu" target="_blank">
+                        7R5H+J67, Lawaan I, Talisay, Cebu
+                    </a></p>
+
+                    <p><a href="https://www.google.com/maps?q=7R5H+J67+Lawaan+I+Talisay+Cebu" target="_blank" class="btn btn-success">View on Google Maps</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Send a Message</h4>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-success w-100">Send</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

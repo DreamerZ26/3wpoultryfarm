@@ -14,17 +14,29 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand fw-bold" href="{% url 'pages:home' %}">
-                <span style="color: #4caf50;">🐔</span> 3W Poultry Farm
+                🐔 3W Poultry Farm
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'pages:home' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'product_list' %}active{% endif %}" href="{% url 'pages:product_list' %}">Products</a></li>
-                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'pages:about' %}">About</a></li>
-                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'pages:contact' %}">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" 
+                           href="{% url 'pages:home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'product_list' %}active{% endif %}" 
+                           href="{% url 'pages:product_list' %}">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" 
+                           href="{% url 'pages:about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" 
+                           href="{% url 'pages:contact' %}">Contact</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -38,9 +50,9 @@
         <div class="container">
             <p class="mb-0">© 2025 3W Poultry Farm. Fresh eggs & poultry delivered with care.</p>
             <p class="mb-0 small">
-                <a href="#" class="text-light text-decoration-none">Facebook</a> |
-                <a href="#" class="text-light text-decoration-none">Instagram</a> |
-                <a href="mailto:info@3wpoultry.com" class="text-light text-decoration-none">Email</a>
+                <a href="https://www.facebook.com/profile.php?id=61582136377743" target="_blank" class="text-light text-decoration-none">Facebook</a> |
+                <a href="mailto:threewpoultryfarm@gmail.com" class="text-light text-decoration-none">Email</a> |
+                <a href="https://www.google.com/maps?q=7R5H+J67+Lawaan+I+Talisay+Cebu" target="_blank" class="text-light text-decoration-none">Map</a>
             </p>
         </div>
     </footer>

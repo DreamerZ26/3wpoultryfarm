@@ -1,77 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Django Site</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">De Los Reyes</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% extends 'base.html' %}
+{% load static %}
 
-    <section class="hero text-white text-center py-5" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
-        <div class="container py-5">
-            <h1 class="display-3 fw-bold">3W Poultry Farm</h1>
-            <p class="lead">Fresh Eggs Supplier</p>
-            <a href="#" class="btn btn-light btn-lg mt-3">Get Started</a>
-        </div>
-    </section>
+{% block title %}3W Poultry Farm – Fresh Eggs & Poultry{% endblock %}
 
-    <section class="container my-5">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm feature-card">
-                    <div class="card-body p-4">
-                        <h3 class="card-title">⚡ Fast</h3>
-                        <p class="card-text">Django is known for its speed and scalability, perfect for startups to enterprises.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm feature-card">
-                    <div class="card-body p-4">
-                        <h3 class="card-title">🔒 Secure</h3>
-                        <p class="card-text">Built-in protection against SQL injection, XSS, and CSRF attacks.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm feature-card">
-                    <div class="card-body p-4">
-                        <h3 class="card-title">🧩 Versatile</h3>
-                        <p class="card-text">From blogs to e‑commerce, Django powers all kinds of web applications.</p>
-                    </div>
+{% block content %}
+<section class="hero text-white text-center py-5" style="background: linear-gradient(135deg, #2d8a4e 0%, #4caf50 100%);">
+    <div class="container py-5">
+        <h1 class="display-3 fw-bold">3W Poultry Farm</h1>
+        <p class="lead">Fresh Eggs Supplier – Farm‑to‑table quality since 2010.</p>
+        <a href="{% url 'pages:product_list' %}" class="btn btn-light btn-lg mt-3">Explore Our Products</a>
+    </div>
+</section>
+
+<section class="container my-5">
+    <h2 class="text-center mb-4">Why Choose Us</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm feature-card">
+                <div class="card-body p-4 text-center">
+                    <h3 class="card-title">🥚 Fresh Eggs</h3>
+                    <p class="card-text">Harvested daily from free‑range hens. Rich in omega‑3 and flavour.</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <footer class="bg-dark text-light text-center py-4 mt-auto">
-        <div class="container">
-            <p class="mb-0">© 2025 MySite. Built with Django & Bootstrap.</p>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm feature-card">
+                <div class="card-body p-4 text-center">
+                    <h3 class="card-title">🐔 Quality Poultry</h3>
+                    <p class="card-text">Raised without antibiotics, ensuring healthy, tasty meat.</p>
+                </div>
+            </div>
         </div>
-    </footer>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm feature-card">
+                <div class="card-body p-4 text-center">
+                    <h3 class="card-title">🚚 Doorstep Delivery</h3>
+                    <p class="card-text">We deliver fresh products straight to your kitchen.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<!-- Featured Products (dynamic) -->
+{% if products %}
+<section class="container my-5">
+    <h2 class="text-center mb-4">Featured Products</h2>
+    <div class="row g-4">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm feature-card">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                {% endif %}
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text text-muted">{{ product.description|truncatechars:80 }}</p>
+                    <p class="fw-bold">${{ product.price }}</p>
+                    <a href="{{ product.get_absolute_url }}" class="btn btn-outline-success">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<!-- Testimonials -->
+{% if testimonials %}
+<section class="container my-5 bg-light p-4 rounded">
+    <h2 class="text-center mb-4">What Our Customers Say</h2>
+    <div class="row g-4">
+        {% for testimonial in testimonials %}
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <p class="card-text">“{{ testimonial.content }}”</p>
+                    <footer class="blockquote-footer">{{ testimonial.author }} <span class="text-warning">★</span>{{ testimonial.rating }}</footer>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endblock %}
