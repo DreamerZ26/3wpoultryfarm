@@ -1,3 +1,4 @@
+# Deploy trigger: added migrate command (force rebuild)
 services:
   - type: web
     name: 3wpoultryfarm
