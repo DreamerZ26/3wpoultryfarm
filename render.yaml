@@ -16,7 +16,7 @@ services:
           name: poultry-db
           property: connectionString
       - key: EMAIL_HOST_USER
-        value: ""   # set your Gmail or other email
+        value: ""
       - key: EMAIL_HOST_PASSWORD
         value: ""
       - key: DEFAULT_FROM_EMAIL
